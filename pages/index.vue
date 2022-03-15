@@ -24,10 +24,10 @@
                   <p class="text-center py-2 mb-0 border-bottom">Vehicles</p>
 
                   <!-- Vehicles List -->
-                  <b-card no-body v-for="item in 4" :key="item" :class="{active: item == 1}" class="vehicle-item rounded-0 border-0 p-2">
+                  <b-card no-body v-for="item in 4" :key="item" @click="activeVehicle = item" :class="{active: item == activeVehicle}" class="vehicle-item rounded-0 border-0 p-2 pointer">
                      <b-row no-gutters class="align-items-center">
                         <b-col md="4">
-                           <b-card-img src="https://picsum.photos/400/400/?image=20" alt="Image" class=""></b-card-img>
+                           <b-card-img src="https://picsum.photos/400/400/?image=20" alt="Image" class="" style="height: 75px;"></b-card-img>
                         </b-col>
                         <b-col md="8">
                            <b-card-body class="pl-3 pr-2 py-2">
@@ -58,7 +58,7 @@
                </div>
 
                <div class="empty-box-grid">
-                  <div v-for="item in 56" :key="item" class="border" style="height: 90px;"></div>
+                  <div v-for="item in (7*6)" :key="item" class="border" style="height: 90px;"></div>
                </div>
 
             </div>
@@ -72,6 +72,7 @@ export default {
    name: 'IndexPage',
    data() {
       return {
+         activeVehicle: 1,
          form: {
             date: '2022-03-15',
             selected: 'x',
@@ -117,5 +118,8 @@ export default {
 .empty-box-grid {
    display: grid;
    grid-template-columns: repeat(7, 1fr);
+}
+.pointer {
+   cursor: pointer;
 }
 </style>
