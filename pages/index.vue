@@ -24,7 +24,7 @@
                   <p class="text-center py-2 mb-0 border-bottom">Vehicles</p>
 
                   <!-- Vehicles List -->
-                  <b-card no-body v-for="item in 5" :key="item" :class="{active: item == 1}" class="vehicle-item rounded-0 border-0 p-2">
+                  <b-card no-body v-for="item in 4" :key="item" :class="{active: item == 1}" class="vehicle-item rounded-0 border-0 p-2">
                      <b-row no-gutters class="align-items-center">
                         <b-col md="4">
                            <b-card-img src="https://picsum.photos/400/400/?image=20" alt="Image" class=""></b-card-img>
