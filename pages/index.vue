@@ -50,12 +50,17 @@
             <!-- Right content -->
             <div class="col-8">
                <!-- Days -->
-               <div class="d-flex">
-                  <div v-for="(day, i) in days" :key="i" class="flex-grow-1 text-center">
+               <div class="days-grid">
+                  <div v-for="(day, i) in days" :key="i" class="text-center border py-2">
                      <p class="text-muted mb-0">{{ day.name }}</p>
                      <p class="mb-0 font-weight-bold">{{ day.date }}</p>
                   </div>
                </div>
+
+               <div class="empty-box-grid">
+                  <div v-for="item in 56" :key="item" class="border" style="height: 90px;"></div>
+               </div>
+
             </div>
          </div>
       </div>
@@ -102,5 +107,15 @@ export default {
 
 .vehicle-item.active {
    background: rgb(241, 239, 239);
+}
+
+.days-grid {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+}
+
+.empty-box-grid {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
 }
 </style>
