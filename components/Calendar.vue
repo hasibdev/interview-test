@@ -166,6 +166,10 @@ export default {
    white-space: nowrap;
 }
 
+.shedule-item:hover {
+   min-width: 365px !important;
+}
+
 .shedule-item::-webkit-scrollbar {
    display: none;
 }
