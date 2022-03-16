@@ -3,7 +3,7 @@
       <table class="table table-bordered">
          <thead>
             <tr>
-               <td v-for="(day, i) in days" :key="i" class="text-center" style="height: 80px;">
+               <td v-for="(day, i) in days" :key="i" class="text-center" style="height: 80px; width: 80px;">
                   <p class="text-muted mb-0">{{ $moment(day).format('ddd') }}</p>
                   <p class="mb-0 font-weight-bold">{{ $moment(day).format('DD MMM') }}</p>
                </td>
@@ -11,7 +11,7 @@
          </thead>
          <tbody>
             <tr v-for="row in 5" :key="row">
-               <td v-for="(col, i) in days.length" :key="i" :id="`${days[i]}-${row}`" style="height: 80px;"></td>
+               <td v-for="(col, i) in days.length" :key="i" :id="`${days[i]}-${row}`" style="height: 80px; width: 80px;"></td>
             </tr>
          </tbody>
       </table>
@@ -49,7 +49,7 @@ export default {
                position: {
                   top: '0px',
                   left: '0px',
-                  width: '286px',
+                  width: '0px',
                   color: 'primary',
                   row: '1'
                }
@@ -62,7 +62,7 @@ export default {
                position: {
                   top: '0px',
                   left: '0px',
-                  width: '200px',
+                  width: '0px',
                   color: 'info',
                   row: '2'
                }
@@ -71,24 +71,24 @@ export default {
                id: '4500',
                price: 320,
                from: '2022-02-01T18:00:00.000Z',
-               to: '2022-02-02T18:00:00.000Z',
+               to: '2022-02-04T18:00:00.000Z',
                position: {
                   top: '0px',
                   left: '0px',
-                  width: '200px',
+                  width: '0px',
                   color: 'success',
-                  row: '2'
+                  row: '3'
                }
             },
             {
                id: '4500',
                price: 320,
-               from: '2022-02-06T18:00:00.000Z',
-               to: '2022-02-07T18:00:00.000Z',
+               from: '2022-02-04T18:00:00.000Z',
+               to: '2022-02-06T18:00:00.000Z',
                position: {
                   top: '0px',
                   left: '0px',
-                  width: '200px',
+                  width: '0px',
                   color: 'danger',
                   row: '1'
                }
@@ -120,7 +120,7 @@ export default {
                   // const toPos = this.getOffset(toEl)
 
                   const distance = this.getDistanceBetweenElements(fromEl, toEl)
-                  shedule.width = `${distance}px`
+                  shedule.position.width = `${(distance + 85).toFixed(0)}px`
                }
             }
 
