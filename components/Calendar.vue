@@ -71,7 +71,7 @@ export default {
                id: '4500',
                price: 320,
                from: '2022-02-01T18:00:00.000Z',
-               to: '2022-02-03T18:00:00.000Z',
+               to: '2022-02-02T18:00:00.000Z',
                position: {
                   top: '0px',
                   left: '0px',
@@ -108,13 +108,23 @@ export default {
    methods: {
       getPosition(shedule) {
          this.$nextTick(() => {
-            const td = document.getElementById(`${shedule.from}-${shedule.position.row}`)
-            if (td) {
-               const position = this.getOffset(td)
-               console.log(position)
-               shedule.position.top = position.top
-               shedule.position.left = position.left
+            const fromEl = document.getElementById(`${shedule.from}-${shedule.position.row}`)
+            const toEl = document.getElementById(`${shedule.to}-${shedule.position.row}`)
+
+            if (fromEl) {
+               const fromPos = this.getOffset(fromEl)
+               shedule.position.top = fromPos.top
+               shedule.position.left = fromPos.left
+
+               if (toEl) {
+                  // const toPos = this.getOffset(toEl)
+
+                  const distance = this.getDistanceBetweenElements(fromEl, toEl)
+                  shedule.width = `${distance}px`
+               }
             }
+
+
          })
 
       },
@@ -123,7 +133,21 @@ export default {
             scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
             scrollTop = window.pageYOffset || document.documentElement.scrollTop
          return { top: `${(rect.top + scrollTop).toFixed(0)}px`, left: `${(rect.left + scrollLeft).toFixed(0)}px` }
+      },
+      getPositionAtCenter(element) {
+         const { top, left, width, height } = element.getBoundingClientRect()
+         return {
+            x: left + width / 2,
+            y: top + height / 2
+         }
+      },
+      getDistanceBetweenElements(a, b) {
+         const aPosition = this.getPositionAtCenter(a)
+         const bPosition = this.getPositionAtCenter(b)
+
+         return Math.hypot(aPosition.x - bPosition.x, aPosition.y - bPosition.y)
       }
+
    },
 }
 </script>
