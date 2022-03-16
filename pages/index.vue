@@ -49,17 +49,8 @@
 
             <!-- Right content -->
             <div class="col-8">
-               <!-- Days -->
-               <div class="days-grid">
-                  <div v-for="(day, i) in days" :key="i" class="text-center border py-2">
-                     <p class="text-muted mb-0">{{ day.name }}</p>
-                     <p class="mb-0 font-weight-bold">{{ day.date }}</p>
-                  </div>
-               </div>
 
-               <div class="empty-box-grid">
-                  <div v-for="item in (7*6)" :key="item" class="border" style="height: 90px;"></div>
-               </div>
+               <Calendar />
 
             </div>
          </div>
@@ -68,8 +59,13 @@
 </template>
 
 <script>
+import Calendar from '@/components/Calendar.vue'
+
 export default {
    name: 'IndexPage',
+   components: {
+      Calendar,
+   },
    data() {
       return {
          activeVehicle: 1,
@@ -84,21 +80,17 @@ export default {
             { value: 'b', text: 'Selected Option' },
             { value: 'c', text: 'This is an option with object value' }
          ],
-         days: [
-            { name: 'TUE', date: '01 Feb' },
-            { name: 'WED', date: '02 Feb' },
-            { name: 'THU', date: '03 Feb' },
-            { name: 'FRI', date: '04 Feb' },
-            { name: 'SAT', date: '05 Feb' },
-            { name: 'SUN', date: '06 Feb' },
-            { name: 'MON', date: '07 Feb' },
-         ]
+
       }
    }
 }
 </script>
 
 <style scoped>
+.calender-wrapper {
+   position: relative;
+}
+
 .dot {
    width: 12px;
    height: 12px;
@@ -112,12 +104,12 @@ export default {
 
 .days-grid {
    display: grid;
-   grid-template-columns: repeat(7, 1fr);
+   grid-template-columns: repeat(7, 120px);
 }
 
 .empty-box-grid {
    display: grid;
-   grid-template-columns: repeat(7, 1fr);
+   grid-template-columns: repeat(7, 120px);
 }
 .pointer {
    cursor: pointer;
